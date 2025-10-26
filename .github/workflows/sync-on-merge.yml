@@ -1,0 +1,64 @@
+name: Sync Themes and Bump Version
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'datasets/general-knowledge/questions.ndjson'
+
+jobs:
+  sync-and-bump:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.24'
+
+      - name: Build binaries
+        run: |
+          # Linux
+          GOOS=linux GOARCH=amd64 go build -o cultpedia-linux-amd64 ./cmd
+
+      - name: Run validate
+        run: ./cultpedia-linux-amd64 validate
+
+      - name: Run check-duplicates
+        run: ./cultpedia-linux-amd64 check-duplicates
+
+      - name: Run check-translations
+        run: ./cultpedia-linux-amd64 check-translations
+
+      - name: Sync themes
+        run: ./cultpedia-linux-amd64 sync-themes
+
+      - name: Bump version
+        run: ./cultpedia-linux-amd64 bump-version
+
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
+      - name: Get new version
+        run: |
+          VERSION=$(jq -r .version datasets/general-knowledge/manifest.json)
+          echo "NEW_VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Configure Git
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+      - name: Commit and push changes
+        run: |
+          git add datasets/general-knowledge/manifest.json datasets/general-knowledge/themes.ndjson datasets/general-knowledge/subthemes.ndjson datasets/general-knowledge/tags.ndjson
+          git commit -m "chore: sync themes and bump version [v${{ env.NEW_VERSION }}]" || echo "No changes to commit"
+          git push
