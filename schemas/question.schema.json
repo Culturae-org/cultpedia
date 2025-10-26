@@ -1,0 +1,171 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["kind", "slug", "theme", "answers", "i18n"],
+  "properties": {
+    "kind": {
+      "const": "question"
+    },
+    "version": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "theme": {
+      "type": "object",
+      "required": ["slug"],
+      "properties": {
+        "slug": {
+          "type": "string"
+        }
+      }
+    },
+    "subthemes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["slug"],
+        "properties": {
+          "slug": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["slug"],
+        "properties": {
+          "slug": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "qtype": {
+      "enum": ["single_choice"]
+    },
+    "difficulty": {
+      "enum": ["beginner", "intermediate", "advanced"]
+    },
+    "estimated_seconds": {
+      "type": "number"
+    },
+    "points": {
+      "type": "number"
+    },
+    "shuffle_answers": {
+      "type": "boolean"
+    },
+    "i18n": {
+      "type": "object",
+      "required": ["fr", "en", "es"],
+      "properties": {
+        "fr": {
+          "type": "object",
+          "required": ["title", "stem", "explanation"],
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "stem": {
+              "type": "string"
+            },
+            "explanation": {
+              "type": "string"
+            }
+          }
+        },
+        "en": {
+          "type": "object",
+          "required": ["title", "stem", "explanation"],
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "stem": {
+              "type": "string"
+            },
+            "explanation": {
+              "type": "string"
+            }
+          }
+        },
+        "es": {
+          "type": "object",
+          "required": ["title", "stem", "explanation"],
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "stem": {
+              "type": "string"
+            },
+            "explanation": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "answers": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "required": ["slug", "is_correct", "i18n"],
+        "properties": {
+          "slug": {
+            "type": "string"
+          },
+          "is_correct": {
+            "type": "boolean"
+          },
+          "i18n": {
+            "type": "object",
+            "required": ["fr", "en", "es"],
+            "properties": {
+              "fr": {
+                "type": "object",
+                "required": ["label"],
+                "properties": {
+                  "label": {
+                    "type": "string"
+                  }
+                }
+              },
+              "en": {
+                "type": "object",
+                "required": ["label"],
+                "properties": {
+                  "label": {
+                    "type": "string"
+                  }
+                }
+              },
+              "es": {
+                "type": "object",
+                "required": ["label"],
+                "properties": {
+                  "label": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "schema_version": "qcm/1.0.0",
+  "dataset": "something-else",
+  "version": "1.2.0",
+  "exported_at": "2025-09-22T10:12:00Z",
+  "includes": ["questions"],
+  "counts": { "questions": 0 },
+  "hashes": {
+    "questions.ndjson": "sha256-CI-<RECALCULE>"
+  }
+}

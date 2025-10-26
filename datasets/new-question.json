@@ -1,0 +1,27 @@
+{
+  "kind": "question",
+  "version": "1.0",
+  "slug": "default-question-slug",
+  "theme": { "slug": "default-theme" },
+  "subthemes": [ { "slug": "default-subtheme1" }, { "slug": "default-subtheme2" } ],
+  "tags": [ { "slug": "default-tag1" }, { "slug": "default-tag2" } ],
+  "qtype": "single_choice",
+  "difficulty": "beginner",
+  "estimated_seconds": 15,
+  "points": 1.0,
+  "shuffle_answers": true,
+  "i18n": {
+    "fr": { "title": "Titre par défaut", "stem": "Question par défaut ?", "explanation": "Explication par défaut." },
+    "en": { "title": "Default Title", "stem": "Default question?", "explanation": "Default explanation." },
+    "es": { "title": "Título por defecto", "stem": "¿Pregunta por defecto?", "explanation": "Explicación por defecto." }
+  },
+  "answers": [
+    { "slug": "default-answer1", "is_correct": true,  "i18n": { "fr": { "label": "Réponse 1" }, "en": { "label": "Answer 1" }, "es": { "label": "Respuesta 1" } } },
+    { "slug": "default-answer2", "is_correct": false, "i18n": { "fr": { "label": "Réponse 2" }, "en": { "label": "Answer 2" }, "es": { "label": "Respuesta 2" } } },
+    { "slug": "default-answer3", "is_correct": false, "i18n": { "fr": { "label": "Réponse 3" }, "en": { "label": "Answer 3" }, "es": { "label": "Respuesta 3" } } },
+    { "slug": "default-answer4", "is_correct": false, "i18n": { "fr": { "label": "Réponse 4" }, "en": { "label": "Answer 4" }, "es": { "label": "Respuesta 4" } } }
+  ],
+  "sources": [
+    "https://example.com/default-source"
+  ]
+}

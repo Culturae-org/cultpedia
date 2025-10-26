@@ -1,0 +1,25 @@
+{
+  "schema_version": "qcm/1.0.0",
+  "dataset": "general-knowledge",
+  "version": "1.0.0",
+  "created_at": "2025-10-23T22:10:29Z",
+  "updated_at": "2025-10-23T22:10:29Z",
+  "includes": [
+    "themes",
+    "subthemes",
+    "tags",
+    "questions"
+  ],
+  "counts": {
+    "questions": 0,
+    "subthemes": 0,
+    "tags": 0,
+    "themes": 0
+  },
+  "checksums": {
+    "questions.ndjson": "sha256-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "subthemes.ndjson": "sha256-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tags.ndjson": "sha256-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "themes.ndjson": "sha256-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

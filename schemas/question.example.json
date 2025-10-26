@@ -1,0 +1,28 @@
+{
+  "kind": "question",
+  "version": "1.0",
+  "slug": "slug-example",
+  "theme": { "slug": "example-theme" },
+  "subthemes": [ { "slug": "example-subtheme-1" }, { "slug": "example-subtheme-2" } ],
+  "tags": [ { "slug": "example-tag-1" }, { "slug": "example-tag-2" } ],
+  "qtype": "single_choice",
+  "difficulty": "beginner",
+  "estimated_seconds": 20,
+  "points": 1.0,
+  "shuffle_answers": true,
+  "i18n": {
+    "fr": { "title": "Exemple de question", "stem": "Exemple", "explanation": "Exemple" },
+    "en": { "title": "Example question", "stem": "Example", "explanation": "Example" },
+    "es": { "title": "Pregunta de ejemplo", "stem": "Ejemplo", "explanation": "Ejemplo" }
+  },
+  "answers": [
+    { "slug": "", "is_correct": true,  "i18n": { "fr": { "label": "" }, "en": { "label": "" }, "es": { "label": "" } } },
+    { "slug": "", "is_correct": false, "i18n": { "fr": { "label": "" }, "en": { "label": "" }, "es": { "label": "" } } },
+    { "slug": "", "is_correct": false, "i18n": { "fr": { "label": "" }, "en": { "label": "" }, "es": { "label": "" } } },
+    { "slug": "", "is_correct": false, "i18n": { "fr": { "label": "" }, "en": { "label": "" }, "es": { "label": "" } } }
+  ],
+  "sources": [
+    "https://example.com",
+    "https://example.org"
+  ]
+}
