@@ -1,0 +1,12 @@
+#--------------------------------------------------
+#    Gitignore file - Culturae | Cultpedia        |
+#--------------------------------------------------
+
+/.env
+.DS_Store
+.direnv
+cultpedia.exe
+cultpedia
+
+# for the moment 
+.github
