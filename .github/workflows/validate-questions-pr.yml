@@ -39,4 +39,4 @@ jobs:
       - name: Check for unwanted changes
         run: |
           echo "Checking that only questions.ndjson was modified..."
-          git diff --name-only base/${{ github.base_ref }} | grep -v "questions.ndjson" && echo "Error: Only questions.ndjson should be modified in this PR" && exit 1 || true
+          git diff --name-only base/${{ github.base_ref }} | grep -v "questions.ndjson" && echo "Error: Only questions.ndjson should be modified in this PR" && exit 1
