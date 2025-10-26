@@ -30,10 +30,13 @@ jobs:
       - name: Run check-translations
         run: ./cultpedia check-translations
 
+      - name: Add base remote
+        run: git remote add base https://github.com/${{ github.event.pull_request.base.repo.full_name }}.git
+
       - name: Fetch base branch
-        run: git fetch origin ${{ github.base_ref }} --depth=1
+        run: git fetch base ${{ github.base_ref }} --depth=1
 
       - name: Check for unwanted changes
         run: |
           echo "Checking that only questions.ndjson was modified..."
-          git diff --name-only origin/${{ github.base_ref }} | grep -v "questions.ndjson" && echo "Error: Only questions.ndjson should be modified in this PR" && exit 1 || true
+          git diff --name-only base/${{ github.base_ref }} | grep -v "questions.ndjson" && echo "Error: Only questions.ndjson should be modified in this PR" && exit 1 || true
