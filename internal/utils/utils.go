@@ -43,34 +43,37 @@ func SaveQuestion(q models.Question) error {
 		return fmt.Errorf("minification error: %v", err)
 	}
 	ndjsonLine := string(minified) + "\n"
-	f, err := os.OpenFile(QuestionsFile, os.O_RDWR|os.O_CREATE, 0644)
+
+	if _, err := os.Stat(QuestionsFile); err == nil {
+		f, err := os.Open(QuestionsFile)
+		if err != nil {
+			return fmt.Errorf("error opening file for check: %v", err)
+		}
+		defer f.Close()
+		stat, err := f.Stat()
+		if err != nil {
+			return fmt.Errorf("error getting file stat: %v", err)
+		}
+		size := stat.Size()
+		if size > 0 {
+			buf := make([]byte, 1)
+			_, err := f.ReadAt(buf, size-1)
+			if err != nil {
+				return fmt.Errorf("error reading file end: %v", err)
+			}
+			if buf[0] != '\n' {
+				ndjsonLine = "\n" + ndjsonLine
+			}
+		}
+	}
+
+	f, err := os.OpenFile(QuestionsFile, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		return fmt.Errorf("error opening file: %v", err)
 	}
 	defer func() {
 		_ = f.Close()
 	}()
-	_, err = f.Seek(0, 2)
-	if err != nil {
-		return err
-	}
-	stat, err := f.Stat()
-	if err != nil {
-		return err
-	}
-	if stat.Size() > 0 {
-		lastByte := make([]byte, 1)
-		_, err = f.ReadAt(lastByte, stat.Size()-1)
-		if err != nil {
-			return err
-		}
-		if lastByte[0] != '\n' {
-			_, err = f.WriteString("\n")
-			if err != nil {
-				return err
-			}
-		}
-	}
 	if _, err := f.WriteString(ndjsonLine); err != nil {
 		return fmt.Errorf("error writing to file: %v", err)
 	}
