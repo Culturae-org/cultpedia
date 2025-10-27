@@ -43,6 +43,30 @@ func SaveQuestion(q models.Question) error {
 		return fmt.Errorf("minification error: %v", err)
 	}
 	ndjsonLine := string(minified) + "\n"
+
+	if _, err := os.Stat(QuestionsFile); err == nil {
+		f, err := os.Open(QuestionsFile)
+		if err != nil {
+			return fmt.Errorf("error opening file for check: %v", err)
+		}
+		defer f.Close()
+		stat, err := f.Stat()
+		if err != nil {
+			return fmt.Errorf("error getting file stat: %v", err)
+		}
+		size := stat.Size()
+		if size > 0 {
+			buf := make([]byte, 1)
+			_, err := f.ReadAt(buf, size-1)
+			if err != nil {
+				return fmt.Errorf("error reading file end: %v", err)
+			}
+			if buf[0] != '\n' {
+				ndjsonLine = "\n" + ndjsonLine
+			}
+		}
+	}
+
 	f, err := os.OpenFile(QuestionsFile, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		return fmt.Errorf("error opening file: %v", err)
