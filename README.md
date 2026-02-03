@@ -178,4 +178,4 @@ For questions or support, open an issue on GitHub or contact the Culturae/Cultpe
 
 ## License
 
-[MIT LICENSE](./LICENSE)
+MIT - [Culturae](https://culturae.me)
