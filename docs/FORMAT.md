@@ -144,7 +144,9 @@ Each country in `countries.ndjson` is a JSON object, follow this to see the sche
 | `tld` | string | Top-level domain |
 | `phone_code` | string | International calling code |
 | `driving_side` | string | `"left"` or `"right"` |
-| `un_member` | boolean | UN membership status |
+| `independent` | boolean | Whether the country is a sovereign state |
+
+> **`independent` field:** `true` for sovereign states (~199 entries), including non-UN members (Vatican, Kosovo, Palestine, Taiwan, Cook Islands, Niue). `false` for territories and dependencies (~51 entries: overseas territories, special administrative regions, Antarctica, etc.). This allows clients to filter: normal mode shows only sovereign states, hard mode includes everything.
 
 ## Continent Structure
 

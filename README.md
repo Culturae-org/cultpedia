@@ -22,7 +22,7 @@ The Goal of Cultpedia is to offer a centralized question bank that can be easily
 - **Multilingual Support**: English, French, and Spanish.
 - **Schema Validation**: JSON Schema ensures data integrity.
 - **Versioning**: Automatic versioning with manifest updates.
-- **Interactive CLI**: Go-based tool for adding, validating, and managing questions.
+- **CLI Tool**: Go-based tool for adding, validating, and managing questions.
 - **SHA256 Checksums**: Data integrity verification for imports.
 - **Full compatibility with Culturae**: Seamless integration with the Culturae platform.
 
@@ -81,6 +81,59 @@ You can create your own dataset following the Cultpedia format. Use the *cultped
 ./cultpedia init {dataset-name}
 ```
 
+## AI-Assisted Question Generation
+
+Cultpedia includes a built-in AI question generator powered by [Perplexity AI](https://www.perplexity.ai/). It uses the [LLMS.md](LLMS.md) specification as system prompt to ensure generated questions follow the Cultpedia format.
+
+### Setup
+
+```bash
+# Set your Perplexity API key (see .env.example)
+export PPLX_API_KEY="pplx-xxxx..."
+```
+
+### CLI Commands
+
+```bash
+# Generate questions on a topic
+./cultpedia generate "French Revolution" --theme history --count 5
+
+# Options
+#   --theme <slug>        Theme slug (default: science)
+#   --count <n>           Number of questions, 1-10 (default: 3)
+#   --difficulty <level>  beginner, intermediate, advanced (default: intermediate)
+#   --type <qtype>        single_choice or true_false (default: single_choice)
+
+# Review pending questions
+./cultpedia pending
+
+# Approve a question (adds it to the main dataset)
+./cultpedia approve <index>
+
+# Reject a question (removes it from pending)
+./cultpedia reject <index>
+```
+
+### Workflow
+
+1. **Generate** -- Questions are generated via Perplexity AI and saved to `datasets/pending-questions.ndjson`
+2. **Review** -- Use `pending` to preview each question (slug, stem, theme, sources)
+3. **Approve/Reject** -- Approved questions are moved to the main dataset; rejected ones are discarded
+4. **Validate & PR** -- Run `./cultpedia validate`, then create a PR
+
+> [!TIP]
+> Always verify the sources provided by the AI before approving. Factual accuracy is our top priority.
+
+### Using LLMS.md with external AI
+
+You can also use [LLMS.md](LLMS.md) directly with any AI assistant:
+
+```
+Using the LLMS.md guide from Cultpedia, generate a quiz question about [TOPIC].
+```
+
+**[Full AI Guide](LLMS.md)**
+
 
 ## Project Structure
 
@@ -119,15 +172,17 @@ You can create your own dataset following the Cultpedia format. Use the *cultped
 │
 ├── internal/
 │   ├── actions/
-│   │   └── actions.go          # Actions logic
+│   │   ├── actions.go          # Question CRUD, theme sync, versioning
+│   │   ├── api.go              # REST API server
+│   │   └── generate.go         # AI question generation (Perplexity)
 │   ├── checks/
-│   │   └── checks.go           # Validation checks
+│   │   ├── checks.go           # Question validation
+│   │   └── geography.go        # Geography validation
 │   ├── models/
-│   │   └── question.go         # Data models
-│   ├── ui/
-│   │   └── ui.go               # TUI interface
+│   │   ├── question.go         # Question data models
+│   │   └── geography.go        # Geography data models
 │   └── utils/
-│       └── utils.go            # Utilities
+│       └── utils.go            # File I/O, path constants
 |
 ├── schemas/
 │   ├── manifest-geography.example.json  # Geography manifest example

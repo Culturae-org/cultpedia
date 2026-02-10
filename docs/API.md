@@ -245,7 +245,7 @@ Returns all countries with geographic data, flags, population, etc.
       "tld": ".fr",
       "phone_code": "+33",
       "driving_side": "right",
-      "un_member": true
+      "independent": true
     }
   ],
   "count": 250
@@ -275,7 +275,7 @@ Returns all countries with geographic data, flags, population, etc.
 | `tld` | string | Top-level domain |
 | `phone_code` | string | International calling code |
 | `driving_side` | string | `"left"` or `"right"` |
-| `un_member` | boolean | UN membership status |
+| `independent` | boolean | Whether the country is a sovereign state (`true` for ~199 sovereign states, `false` for ~51 territories/dependencies) |
 
 ---
 

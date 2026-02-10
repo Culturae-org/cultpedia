@@ -63,7 +63,7 @@ go build -o cultpedia ./cmd
 ## Contributing Questions
 
 > [!IMPORTANT]
-> Do not edit the questions.ndjson file directly. Use the interactive TUI tool described below!
+> Do not edit the questions.ndjson file directly. Use the CLI tool described below!
 
 ### Available Themes
 
@@ -122,20 +122,19 @@ Provide at least one reliable source URL (Wikipedia, official websites, academic
    - **Standard questions (4 choices):** Edit [`datasets/new-question.json`](../datasets/new-question.json)
    - **True/False questions (2 choices):** Edit [`datasets/new-question-true-false.json`](../datasets/new-question-true-false.json)
 
-3. **Validate locally** (optional but recommended):
+3. **Preview your question** (optional but recommended):
    ```bash
-   ./cultpedia validate
+   ./cultpedia preview
+   # or for true/false questions:
+   ./cultpedia preview --type true_false
    ```
 
-4. **Run the TUI tool** to add your question:
+4. **Add your question** to the dataset:
    ```bash
-   ./cultpedia
+   ./cultpedia add
+   # or for true/false questions:
+   ./cultpedia add --type true_false
    ```
-   Follow **Validate new question** and **Add question to dataset** steps.
-
-   ![Interactive Tool](./cultpedia.gif)
-
-   ![add_question](./add_question.png)
 
 > [!WARNING]
 > Don't edit **.ndjson** and **manifest.json** files directly.
@@ -185,6 +184,57 @@ Provide at least one reliable source URL (Wikipedia, official websites, academic
 - **Do not commit** manifest.json, themes.ndjson, subthemes.ndjson, or tags.ndjson
 - These files are updated automatically by the CI
 
+## Contributing with AI Generation
+
+You can use Cultpedia's built-in AI generator to create questions faster. This uses the Perplexity AI API.
+
+### Setup
+
+1. Get a Perplexity API key at [perplexity.ai/settings/api](https://www.perplexity.ai/settings/api)
+2. Set the environment variable:
+   ```bash
+   export PPLX_API_KEY="pplx-xxxx..."
+   ```
+
+### Step-by-Step
+
+1. **Generate questions:**
+   ```bash
+   ./cultpedia generate "the Solar System" --theme science --count 3 --difficulty intermediate
+   ```
+
+2. **Review generated questions:**
+   ```bash
+   ./cultpedia pending
+   ```
+
+3. **Approve or reject each question:**
+   ```bash
+   ./cultpedia approve 0   # Approve first question
+   ./cultpedia reject 1    # Reject second question
+   ```
+
+4. **Validate and submit:**
+   ```bash
+   ./cultpedia validate
+   git checkout -b add-ai-questions
+   git add datasets/general-knowledge/questions.ndjson
+   git commit -m "feat: add AI-generated questions about the Solar System"
+   git push origin add-ai-questions
+   ```
+
+> [!IMPORTANT]
+> Always verify the AI-generated sources before approving. Check that URLs are accessible and that the factual content is correct. The AI guide ([LLMS.md](../LLMS.md)) enforces source quality, but human review is essential.
+
+### Available Options
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `--theme <slug>` | `science` | Theme slug (science, history, geography, sports, gaming) |
+| `--count <n>` | `3` | Number of questions to generate (1-10) |
+| `--difficulty <level>` | `intermediate` | beginner, intermediate, advanced |
+| `--type <qtype>` | `single_choice` | single_choice or true_false |
+
 ## Contributing Code
 
 ### Setup
@@ -216,7 +266,6 @@ internal/
 ├── actions/          # Domain logic (question management, API server)
 ├── checks/           # Validation pipeline
 ├── models/           # Data structures
-├── ui/               # Bubble Tea TUI components
 └── utils/            # File I/O helpers
 ```
 
