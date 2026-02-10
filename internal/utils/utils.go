@@ -23,6 +23,9 @@ const (
 	ContinentsFile         = "datasets/geography/continents.ndjson"
 	RegionsFile            = "datasets/geography/regions.ndjson"
 	FlagsSVGDir            = "datasets/geography/assets/flags/svg"
+
+	PendingQuestionsFile = "datasets/pending-questions.ndjson"
+	LLMSGuideFile        = "LLMS.md"
 )
 
 func LoadQuestions() ([]models.Question, error) {
@@ -127,35 +130,46 @@ func PrintHelp() {
 	helpText := `
 Cultpedia - Question Dataset Management Tool
 
-USAGE FOR CONTRIBUTORS:
-  ./cultpedia                  Launch interactive UI (recommended for adding questions)
-
-USAGE FOR MAINTAINERS:
-  ./cultpedia [command]
+USAGE:
+  cultpedia [command] [options]
 
 COMMANDS:
-  help                       Show this help message
-  
+  help                          Show this help message
+  version                       Show local and remote dataset versions
+
   Questions Dataset:
   validate                      Validate the questions dataset for consistency and correctness
   check-duplicates              Check for duplicate questions in the dataset
   check-translations            Check for missing translations in the dataset
-  add                           Add a new question to the dataset via interactive prompts
+  preview [--type <qtype>]      Preview the current question template
+  add [--type <qtype>]          Validate and add a new question to the dataset
   sync-themes                   Synchronize themes and subthemes with the questions dataset
   bump-version                  Increment version and update manifest (automated in CI)
-  
+
+  AI Generation (requires PPLX_API_KEY):
+  generate <topic>              Generate questions using Perplexity AI
+    --theme <theme>             Theme slug (default: science)
+    --count <n>                 Number of questions (default: 3, max: 10)
+    --difficulty <level>        beginner, intermediate, advanced
+    --type <qtype>              single_choice or true_false
+  pending                       List pending questions awaiting review
+  approve <index>               Approve a pending question and add to dataset
+  reject <index>                Reject and remove a pending question
+
   Geography Dataset:
   validate-geography            Validate the geography dataset (countries, continents, regions)
   check-geography-duplicates    Check for duplicate entries in geography dataset
   check-geography-translations  Check for missing translations in geography dataset
   bump-geography-version        Increment geography version and update checksums (automated in CI)
-  
+
   General:
-  init [dataset-name]        Initialize a new Cultpedia dataset structure
+  init [dataset-name]           Initialize a new Cultpedia dataset structure
+  api [port]                    Start the REST API server (default: 8080)
 
 CONTRIBUTION GUIDE:
-  For questions: Fork → Edit template file → Use TUI to add → Create PR
+  For questions: Fork → Edit template → cultpedia preview → cultpedia add → Create PR
   For code: Fork → Edit code → Run tests → Create PR
+  For AI generation: Set PPLX_API_KEY → generate → pending → approve/reject → Create PR
 
 For more info, see CONTRIBUTING.md in the docs/ folder.
 Or visit:
@@ -164,6 +178,29 @@ Or visit:
 Thank you for contributing to Cultpedia!
 `
 	fmt.Println(helpText)
+}
+
+func LoadThemeTranslations(filePath string) (map[string]models.ThemeTranslation, error) {
+	data, err := os.ReadFile(filePath)
+	if err != nil {
+		if os.IsNotExist(err) {
+			return make(map[string]models.ThemeTranslation), nil
+		}
+		return nil, err
+	}
+	result := make(map[string]models.ThemeTranslation)
+	lines := strings.Split(string(data), "\n")
+	for _, line := range lines {
+		if strings.TrimSpace(line) == "" {
+			continue
+		}
+		var t models.ThemeTranslation
+		if err := json.Unmarshal([]byte(line), &t); err != nil {
+			return nil, fmt.Errorf("json parsing error: %v", err)
+		}
+		result[t.Slug] = t
+	}
+	return result, nil
 }
 
 func LoadCountries() ([]models.Country, error) {

@@ -122,6 +122,14 @@ func validateCountry(c models.Country) error {
 		return fmt.Errorf("coordinates.lng must be between -180 and 180 (got %.6f)", c.Coordinates.Lng)
 	}
 
+	if c.Currency.Code != "" {
+		for _, lang := range requiredLangs {
+			if c.Currency.Name[lang] == "" {
+				return fmt.Errorf("currency.name.%s is required", lang)
+			}
+		}
+	}
+
 	validDrivingSides := []string{"left", "right"}
 	if !contains(validDrivingSides, c.DrivingSide) {
 		return fmt.Errorf("driving_side must be 'left' or 'right' (got '%s')", c.DrivingSide)
@@ -296,6 +304,9 @@ func CheckGeographyTranslations() string {
 			}
 			if c.OfficialName[lang] == "" {
 				missing = append(missing, fmt.Sprintf("Country line %d (slug: %s): missing %s translation for 'official_name'", i+1, c.Slug, lang))
+			}
+			if c.Currency.Code != "" && c.Currency.Name[lang] == "" {
+				missing = append(missing, fmt.Sprintf("Country line %d (slug: %s): missing %s translation for 'currency.name'", i+1, c.Slug, lang))
 			}
 		}
 	}

@@ -20,7 +20,7 @@ type Country struct {
 	TLD          string                       `json:"tld"`
 	PhoneCode    string                       `json:"phone_code"`
 	DrivingSide  string                       `json:"driving_side"`
-	UNMember     bool                         `json:"un_member"`
+	Independent  bool                         `json:"independent"`
 }
 
 type Coordinates struct {
@@ -29,9 +29,9 @@ type Coordinates struct {
 }
 
 type Currency struct {
-	Code   string `json:"code"`
-	Name   string `json:"name"`
-	Symbol string `json:"symbol"`
+	Code   string            `json:"code"`
+	Name   map[string]string `json:"name"`
+	Symbol string            `json:"symbol"`
 }
 
 type Continent struct {

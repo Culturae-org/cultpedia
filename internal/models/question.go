@@ -36,3 +36,8 @@ type Answer struct {
 type Label struct {
 	Label string `json:"label"`
 }
+
+type ThemeTranslation struct {
+	Slug string           `json:"slug"`
+	I18n map[string]Label `json:"i18n,omitempty"`
+}

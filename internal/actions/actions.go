@@ -8,6 +8,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"sort"
 	"strconv"
 	"strings"
 	"time"
@@ -170,6 +171,20 @@ func SyncThemes() string {
 	if err != nil {
 		return fmt.Sprintf("✗ error reading questions: %v", err)
 	}
+
+	existingThemes, err := utils.LoadThemeTranslations(utils.ThemesFile)
+	if err != nil {
+		return fmt.Sprintf("✗ error reading existing themes: %v", err)
+	}
+	existingSubthemes, err := utils.LoadThemeTranslations(utils.SubthemesFile)
+	if err != nil {
+		return fmt.Sprintf("✗ error reading existing subthemes: %v", err)
+	}
+	existingTags, err := utils.LoadThemeTranslations(utils.TagsFile)
+	if err != nil {
+		return fmt.Sprintf("✗ error reading existing tags: %v", err)
+	}
+
 	themeSlugs := make(map[string]bool)
 	subthemeSlugs := make(map[string]bool)
 	tagSlugs := make(map[string]bool)
@@ -184,20 +199,24 @@ func SyncThemes() string {
 		}
 	}
 
-	if err := writeSlugFile(utils.ThemesFile, themeSlugs); err != nil {
+	mergedThemes := mergeThemeTranslations(themeSlugs, existingThemes)
+	mergedSubthemes := mergeThemeTranslations(subthemeSlugs, existingSubthemes)
+	mergedTags := mergeThemeTranslations(tagSlugs, existingTags)
+
+	if err := writeThemeFile(utils.ThemesFile, mergedThemes); err != nil {
 		return fmt.Sprintf("✗ error writing themes: %v", err)
 	}
-	if err := writeSlugFile(utils.SubthemesFile, subthemeSlugs); err != nil {
+	if err := writeThemeFile(utils.SubthemesFile, mergedSubthemes); err != nil {
 		return fmt.Sprintf("✗ error writing subthemes: %v", err)
 	}
-	if err := writeSlugFile(utils.TagsFile, tagSlugs); err != nil {
+	if err := writeThemeFile(utils.TagsFile, mergedTags); err != nil {
 		return fmt.Sprintf("✗ error writing tags: %v", err)
 	}
 
-	if err := updateManifest(len(questions), len(themeSlugs), len(subthemeSlugs), len(tagSlugs)); err != nil {
+	if err := updateManifest(len(questions), len(mergedThemes), len(mergedSubthemes), len(mergedTags)); err != nil {
 		return fmt.Sprintf("✗ error updating manifest: %v", err)
 	}
-	return fmt.Sprintf("✔ Themes synced successfully\n  - %d questions\n  - %d themes\n  - %d subthemes\n  - %d tags", len(questions), len(themeSlugs), len(subthemeSlugs), len(tagSlugs))
+	return fmt.Sprintf("✔ Themes synced successfully\n  - %d questions\n  - %d themes\n  - %d subthemes\n  - %d tags", len(questions), len(mergedThemes), len(mergedSubthemes), len(mergedTags))
 }
 
 func BumpVersion() (string, error) {
@@ -382,13 +401,42 @@ func InitCultpediaDataset(targetDir, datasetName string) (string, error) {
 // --------------------------------
 // Helper functions
 // --------------------------------
-func writeSlugFile(filePath string, slugs map[string]bool) error {
-	var lines []string
+func mergeThemeTranslations(slugs map[string]bool, existing map[string]models.ThemeTranslation) map[string]models.ThemeTranslation {
+	merged := make(map[string]models.ThemeTranslation)
 	for slug := range slugs {
-		lines = append(lines, fmt.Sprintf(`{"slug": "%s"}`, slug))
+		if t, ok := existing[slug]; ok {
+			merged[slug] = t
+		} else {
+			merged[slug] = models.ThemeTranslation{
+				Slug: slug,
+				I18n: map[string]models.Label{
+					"fr": {Label: ""},
+					"en": {Label: ""},
+					"es": {Label: ""},
+				},
+			}
+		}
 	}
-	data := strings.Join(lines, "\n") + "\n"
-	return os.WriteFile(filePath, []byte(data), 0644)
+	return merged
+}
+
+func writeThemeFile(filePath string, themes map[string]models.ThemeTranslation) error {
+	slugs := make([]string, 0, len(themes))
+	for slug := range themes {
+		slugs = append(slugs, slug)
+	}
+	sort.Strings(slugs)
+
+	var lines []string
+	for _, slug := range slugs {
+		data, err := json.Marshal(themes[slug])
+		if err != nil {
+			return fmt.Errorf("error marshaling theme %s: %v", slug, err)
+		}
+		lines = append(lines, string(data))
+	}
+	content := strings.Join(lines, "\n") + "\n"
+	return os.WriteFile(filePath, []byte(content), 0644)
 }
 
 func updateManifest(questionCount, themeCount, subthemeCount, tagCount int) error {
