@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
-  "required": ["kind", "slug", "iso_alpha2", "iso_alpha3", "iso_numeric", "name", "official_name", "capital", "continent", "region", "coordinates", "flag", "population", "area_km2", "currency", "languages", "neighbors", "tld", "phone_code", "driving_side", "un_member"],
+  "required": ["kind", "slug", "iso_alpha2", "iso_alpha3", "iso_numeric", "name", "official_name", "capital", "continent", "region", "coordinates", "flag", "population", "area_km2", "currency", "languages", "neighbors", "tld", "phone_code", "driving_side", "independent"],
   "properties": {
     "kind": {
       "const": "country"
@@ -136,7 +136,7 @@
       "type": "string",
       "enum": ["left", "right"]
     },
-    "un_member": {
+    "independent": {
       "type": "boolean"
     }
   }

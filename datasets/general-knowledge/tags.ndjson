@@ -1,27 +1,32 @@
-{"slug": "iceland"}
-{"slug": "area"}
-{"slug": "nikola-tesla"}
-{"slug": "canada"}
-{"slug": "usa"}
-{"slug": "fortnite"}
-{"slug": "history-of-science"}
-{"slug": "world-championship"}
-{"slug": "france"}
-{"slug": "national-day"}
-{"slug": "paris"}
-{"slug": "capital"}
-{"slug": "first-emperor"}
-{"slug": "women-in-science"}
-{"slug": "dimensions"}
-{"slug": "revolution"}
-{"slug": "eiffel"}
-{"slug": "germany"}
-{"slug": "world-of-warcraft"}
-{"slug": "epic-games"}
-{"slug": "qin-shi-huang"}
-{"slug": "nobel-prize"}
-{"slug": "planet-earth"}
-{"slug": "deathdate"}
-{"slug": "blizzard"}
-{"slug": "WOW"}
-{"slug": "formula-1"}
+{"slug":"WOW","i18n":{"en":{"label":"WOW"},"es":{"label":"WOW"},"fr":{"label":"WOW"}}}
+{"slug":"area","i18n":{"en":{"label":"Area"},"es":{"label":"Superficie"},"fr":{"label":"Superficie"}}}
+{"slug":"blizzard","i18n":{"en":{"label":"Blizzard"},"es":{"label":"Blizzard"},"fr":{"label":"Blizzard"}}}
+{"slug":"canada","i18n":{"en":{"label":"Canada"},"es":{"label":"Canadá"},"fr":{"label":"Canada"}}}
+{"slug":"capital","i18n":{"en":{"label":"Capital"},"es":{"label":"Capital"},"fr":{"label":"Capitale"}}}
+{"slug":"deathdate","i18n":{"en":{"label":"Death Date"},"es":{"label":"Fecha de fallecimiento"},"fr":{"label":"Date de décès"}}}
+{"slug":"dimensions","i18n":{"en":{"label":"Dimensions"},"es":{"label":"Dimensiones"},"fr":{"label":"Dimensions"}}}
+{"slug":"eiffel","i18n":{"en":{"label":"Eiffel"},"es":{"label":"Eiffel"},"fr":{"label":"Eiffel"}}}
+{"slug":"epic-games","i18n":{"en":{"label":"Epic Games"},"es":{"label":"Epic Games"},"fr":{"label":"Epic Games"}}}
+{"slug":"etats-generaux","i18n":{"en":{"label":"Estates-General"},"es":{"label":"Estados Generales"},"fr":{"label":"États généraux"}}}
+{"slug":"first-emperor","i18n":{"en":{"label":"First Emperor"},"es":{"label":"Primer emperador"},"fr":{"label":"Premier empereur"}}}
+{"slug":"formula-1","i18n":{"en":{"label":"Formula 1"},"es":{"label":"Fórmula 1"},"fr":{"label":"Formule 1"}}}
+{"slug":"fortnite","i18n":{"en":{"label":"Fortnite"},"es":{"label":"Fortnite"},"fr":{"label":"Fortnite"}}}
+{"slug":"france","i18n":{"en":{"label":"France"},"es":{"label":"Francia"},"fr":{"label":"France"}}}
+{"slug":"germany","i18n":{"en":{"label":"Germany"},"es":{"label":"Alemania"},"fr":{"label":"Allemagne"}}}
+{"slug":"history-of-science","i18n":{"en":{"label":"History of Science"},"es":{"label":"Historia de la ciencia"},"fr":{"label":"Histoire des sciences"}}}
+{"slug":"iceland","i18n":{"en":{"label":"Iceland"},"es":{"label":"Islandia"},"fr":{"label":"Islande"}}}
+{"slug":"light","i18n":{"en":{"label":"Light"},"es":{"label":"Luz"},"fr":{"label":"Lumière"}}}
+{"slug":"national-day","i18n":{"en":{"label":"National Day"},"es":{"label":"Día nacional"},"fr":{"label":"Fête nationale"}}}
+{"slug":"nikola-tesla","i18n":{"en":{"label":"Nikola Tesla"},"es":{"label":"Nikola Tesla"},"fr":{"label":"Nikola Tesla"}}}
+{"slug":"nobel-prize","i18n":{"en":{"label":"Nobel Prize"},"es":{"label":"Premio Nobel"},"fr":{"label":"Prix Nobel"}}}
+{"slug":"paris","i18n":{"en":{"label":"Paris"},"es":{"label":"París"},"fr":{"label":"Paris"}}}
+{"slug":"physics-constants","i18n":{"en":{"label":"Physics Constants"},"es":{"label":"Constantes físicas"},"fr":{"label":"Constantes physiques"}}}
+{"slug":"planet-earth","i18n":{"en":{"label":"Planet Earth"},"es":{"label":"Planeta Tierra"},"fr":{"label":"Planète Terre"}}}
+{"slug":"qin-shi-huang","i18n":{"en":{"label":"Qin Shi Huang"},"es":{"label":"Qin Shi Huang"},"fr":{"label":"Qin Shi Huang"}}}
+{"slug":"revolution","i18n":{"en":{"label":"Revolution"},"es":{"label":"Revolución"},"fr":{"label":"Révolution"}}}
+{"slug":"revolution-francaise","i18n":{"en":{"label":"French Revolution"},"es":{"label":"Revolución francesa"},"fr":{"label":"Révolution française"}}}
+{"slug":"speed","i18n":{"en":{"label":"Speed"},"es":{"label":"Velocidad"},"fr":{"label":"Vitesse"}}}
+{"slug":"usa","i18n":{"en":{"label":"USA"},"es":{"label":"EE. UU."},"fr":{"label":"États-Unis"}}}
+{"slug":"women-in-science","i18n":{"en":{"label":"Women in Science"},"es":{"label":"Mujeres en la ciencia"},"fr":{"label":"Femmes dans la science"}}}
+{"slug":"world-championship","i18n":{"en":{"label":"World Championship"},"es":{"label":"Campeonato del mundo"},"fr":{"label":"Championnat du monde"}}}
+{"slug":"world-of-warcraft","i18n":{"en":{"label":"World of Warcraft"},"es":{"label":"World of Warcraft"},"fr":{"label":"World of Warcraft"}}}

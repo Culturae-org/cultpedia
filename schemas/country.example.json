@@ -39,5 +39,5 @@
   "tld": ".ex",
   "phone_code": "+001",
   "driving_side": "right",
-  "un_member": true
+  "independent": true
 }

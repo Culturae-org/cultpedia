@@ -1,5 +1,5 @@
-{"slug": "geography"}
-{"slug": "gaming"}
-{"slug": "science"}
-{"slug": "sports"}
-{"slug": "history"}
+{"slug":"gaming","i18n":{"en":{"label":"Gaming"},"es":{"label":"Videojuegos"},"fr":{"label":"Jeux vidéo"}}}
+{"slug":"geography","i18n":{"en":{"label":"Geography"},"es":{"label":"Geografía"},"fr":{"label":"Géographie"}}}
+{"slug":"history","i18n":{"en":{"label":"History"},"es":{"label":"Historia"},"fr":{"label":"Histoire"}}}
+{"slug":"science","i18n":{"en":{"label":"Science"},"es":{"label":"Ciencia"},"fr":{"label":"Sciences"}}}
+{"slug":"sports","i18n":{"en":{"label":"Sports"},"es":{"label":"Deportes"},"fr":{"label":"Sports"}}}
