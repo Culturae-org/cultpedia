@@ -44,7 +44,7 @@
   },
   "checksums": {
     "continents.ndjson": "sha256-7eb36aa5d3efcc1831b5693fbe008673c5a705e11289f59132753a389eae3084",
-    "countries.ndjson": "sha256-4fad1d67d09d120a24a662bf316b736af093c83072e025f4b5ef3e4c493ed1fb",
+    "countries.ndjson": "sha256-739fe2ff6970ccf3aa009acb541d85450b5bc36b1860dcc027147c6c40933789",
     "regions.ndjson": "sha256-2fd141fb66451f9504e2d5978a0f4aeb8aca83c381ba35c96258d4ae1ae063e4"
   }
 }
