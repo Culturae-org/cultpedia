@@ -110,68 +110,25 @@ Returns API metadata, available endpoints, dataset versions, and statistics.
 
 **Endpoint:** `GET /api/questions`
 
-Returns all questions with their translations, answers, and metadata.
+Returns questions with their translations, answers, and metadata.
+
+**Query Parameters:**
+- `theme`: Filter by theme slug (e.g., `history`)
+- `subtheme`: Filter by subtheme slug (e.g., `french-revolution`)
+- `tag`: Filter by tag slug (e.g., `france`)
+- `difficulty`: Filter by difficulty (`beginner`, `intermediate`, `advanced`, `pro`)
+- `type`: Filter by question type (`single_choice`, `true_false`)
+- `page`: Page number (default: `1`)
+- `limit`: Number of items per page (default: `50`, max: `500`)
 
 **Response Format:**
 ```json
 {
-  "data": [
-    {
-      "kind": "question",
-      "version": "1.0",
-      "slug": "history-french-revolution-start-year",
-      "theme": {"slug": "history"},
-      "subthemes": [{"slug": "french-revolution"}],
-      "tags": [{"slug": "revolution"}, {"slug": "france"}],
-      "qtype": "single_choice",
-      "difficulty": "beginner",
-      "estimated_seconds": 10,
-      "points": 0.5,
-      "shuffle_answers": true,
-      "i18n": {
-        "en": {
-          "title": "French Revolution",
-          "stem": "In what year did the French Revolution begin?",
-          "explanation": "The French Revolution began in 1789, marking a major turning point in French history."
-        },
-        "fr": {
-          "title": "Révolution française",
-          "stem": "En quelle année la Révolution française a-t-elle commencé ?",
-          "explanation": "La Révolution française a commencé en 1789, marquant un tournant majeur dans l'histoire de France."
-        },
-        "es": {
-          "title": "Revolución Francesa",
-          "stem": "¿En qué año comenzó la Revolución Francesa?",
-          "explanation": "La Revolución Francesa comenzó en 1789, marcando un punto de inflexión importante en la historia de Francia."
-        }
-      },
-      "answers": [
-        {
-          "slug": "1789",
-          "is_correct": true,
-          "i18n": {
-            "en": {"label": "1789"},
-            "fr": {"label": "1789"},
-            "es": {"label": "1789"}
-          }
-        },
-        {
-          "slug": "1774",
-          "is_correct": false,
-          "i18n": {
-            "en": {"label": "1774"},
-            "fr": {"label": "1774"},
-            "es": {"label": "1774"}
-          }
-        }
-      ],
-      "sources": [
-        "https://en.wikipedia.org/wiki/French_Revolution",
-        "https://www.britannica.com/event/French-Revolution"
-      ]
-    }
-  ],
-  "count": 13
+  "data": [...],
+  "count": 10,
+  "total": 13,
+  "page": 1,
+  "limit": 10
 }
 ```
 
@@ -200,55 +157,23 @@ Returns all questions with their translations, answers, and metadata.
 
 **Endpoint:** `GET /api/geography/countries`
 
-Returns all countries with geographic data, flags, population, etc.
+Returns countries with geographic data, flags, population, etc.
+
+**Query Parameters:**
+- `continent`: Filter by continent slug (e.g., `europe`)
+- `region`: Filter by region slug (e.g., `western_europe`)
+- `independent`: Filter by sovereignty status (`true` or `false`)
+- `page`: Page number (default: `1`)
+- `limit`: Number of items per page (default: `50`, max: `500`)
 
 **Response Format:**
 ```json
 {
-  "data": [
-    {
-      "slug": "fr",
-      "iso_alpha2": "FR",
-      "iso_alpha3": "FRA",
-      "iso_numeric": "250",
-      "name": {
-        "en": "France",
-        "fr": "France",
-        "es": "Francia"
-      },
-      "official_name": {
-        "en": "French Republic",
-        "fr": "République française",
-        "es": "República Francesa"
-      },
-      "capital": {
-        "en": "Paris",
-        "fr": "Paris",
-        "es": "París"
-      },
-      "continent": "europe",
-      "region": "western_europe",
-      "coordinates": {
-        "lat": 46,
-        "lng": 2
-      },
-      "flag": "fr",
-      "population": 67391582,
-      "area_km2": 551695,
-      "currency": {
-        "code": "EUR",
-        "name": "Euro",
-        "symbol": "€"
-      },
-      "languages": ["fr"],
-      "neighbors": ["and", "bel", "deu", "ita", "lux", "mco", "esp", "che"],
-      "tld": ".fr",
-      "phone_code": "+33",
-      "driving_side": "right",
-      "independent": true
-    }
-  ],
-  "count": 250
+  "data": [...],
+  "count": 50,
+  "total": 250,
+  "page": 1,
+  "limit": 50
 }
 ```
 
@@ -362,13 +287,13 @@ GET /api/geography/flags/de     # Germany flag
 
 ## Examples
 
-### Fetch all questions (JavaScript)
+### Fetch questions by theme (JavaScript)
 
 ```javascript
-fetch('http://localhost:8080/api/questions')
+fetch('http://localhost:8080/api/questions?theme=history&limit=10')
   .then(response => response.json())
   .then(data => {
-    console.log(`Total questions: ${data.count}`);
+    console.log(`Questions in history: ${data.total}`);
     data.data.forEach(question => {
       console.log(question.i18n.en.title);
     });
@@ -381,16 +306,14 @@ fetch('http://localhost:8080/api/questions')
 <img src="http://localhost:8080/api/geography/flags/fr" alt="France flag" />
 ```
 
-### Get countries by region (JavaScript)
+### Get sovereign countries in Europe with pagination (JavaScript)
 
 ```javascript
-fetch('http://localhost:8080/api/geography/countries')
+fetch('http://localhost:8080/api/geography/countries?continent=europe&independent=true&limit=20')
   .then(response => response.json())
   .then(data => {
-    const europeanCountries = data.data.filter(
-      country => country.continent === 'europe'
-    );
-    console.log(`European countries: ${europeanCountries.length}`);
+    console.log(`European sovereign states: ${data.total}`);
+    console.log(`Page: ${data.page}/${Math.ceil(data.total / data.limit)}`);
   });
 ```
 
