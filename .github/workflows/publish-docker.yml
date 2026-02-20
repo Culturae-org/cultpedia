@@ -40,6 +40,8 @@ jobs:
           tags: |
             type=semver,pattern={{version}}
             type=raw,value=latest,enable={{is_default_branch}}
+          labels: |
+            org.opencontainers.image.description=Cultpedia API & CLI - The open-source culturae dataset
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
