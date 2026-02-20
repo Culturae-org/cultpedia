@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - main
+    paths:
+      - '**/*.go'
+      - 'go.mod'
+      - 'go.sum'
+      - 'Dockerfile'
+      - '.github/workflows/publish-docker.yml'
     tags:
       - 'v*'
 
