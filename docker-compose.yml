@@ -1,0 +1,13 @@
+services:
+  api:
+    image: ghcr.io/culturae-org/cultpedia:1.0.0
+    # image: ghcr.io/culturae-org/cultpedia:latest
+    container_name: cultpedia-api
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    environment:
+      - PORT=8080
+    # Optional: mount a volume if you need local modifications
+    # volumes:
+    #   - ./datasets:/app/datasets
