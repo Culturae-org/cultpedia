@@ -7,7 +7,8 @@ RUN go mod download
 
 COPY . .
 
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o cultpedia cmd/main.go
+ARG VERSION="1.0.0"
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-X 'cultpedia/internal/utils.Version=${VERSION}'" -a -installsuffix cgo -o cultpedia cmd/main.go
 
 FROM alpine:latest
 

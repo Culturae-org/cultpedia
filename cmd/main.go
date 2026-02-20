@@ -274,6 +274,8 @@ func printQuestionPreview(q models.Question) {
 }
 
 func handleVersion() {
+	fmt.Printf("Cultpedia Version (API/CLI): %s\n\n", utils.Version)
+
 	version := "unknown"
 	if data, err := os.ReadFile(utils.ManifestFile); err == nil {
 		var manifest models.Manifest
@@ -282,7 +284,7 @@ func handleVersion() {
 		}
 	}
 
-	fmt.Printf("Local version:  %s\n", version)
+	fmt.Printf("Local dataset version:  %s\n", version)
 
 	remoteVersion, err := actions.GetRemoteVersion()
 	if err != nil {

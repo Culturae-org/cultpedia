@@ -205,7 +205,7 @@ func handleRoot(w http.ResponseWriter, r *http.Request) {
 
 	response := models.APIRootResponse{
 		Name:        "Cultpedia API",
-		Version:     "1.0",
+		Version:     utils.Version,
 		Description: "API for Cultpedia questions and geography data",
 		Datasets: map[string]interface{}{
 			"general_knowledge": map[string]string{

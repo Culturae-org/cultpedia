@@ -9,6 +9,8 @@ import (
 	"cultpedia/internal/models"
 )
 
+var Version = "1.0.0"
+
 const (
 	ManifestFile             = "datasets/general-knowledge/manifest.json"
 	QuestionsFile            = "datasets/general-knowledge/questions.ndjson"
