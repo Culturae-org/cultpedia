@@ -69,7 +69,8 @@ jobs:
             echo "HAS_CHANGES=false" >> $GITHUB_ENV
           else
             git commit -m "chore: bump geography version [v${{ env.NEW_VERSION }}]"
-            git push -u origin "$BRANCH_NAME"
+            git pull --rebase origin "$BRANCH_NAME" || true
+            git push origin "$BRANCH_NAME"
             echo "HAS_CHANGES=true" >> $GITHUB_ENV
             echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
           fi
