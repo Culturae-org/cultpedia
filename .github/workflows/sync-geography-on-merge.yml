@@ -62,15 +62,26 @@ jobs:
       - name: Create branch and push changes
         run: |
           BRANCH_NAME="sync-bot/geography-v${{ env.NEW_VERSION }}"
-          git checkout -b "$BRANCH_NAME"
+          
+          # Check if branch exists on remote and fetch it, or create new local branch
+          if git ls-remote --exit-code --heads origin "$BRANCH_NAME" > /dev/null; then
+            git fetch origin "$BRANCH_NAME"
+            git checkout "$BRANCH_NAME"
+          else
+            git checkout -b "$BRANCH_NAME"
+          fi
+          
           git add datasets/geography/manifest.json
           if git diff --staged --quiet; then
             echo "No changes to commit"
             echo "HAS_CHANGES=false" >> $GITHUB_ENV
           else
             git commit -m "chore: bump geography version [v${{ env.NEW_VERSION }}]"
+            
+            # Pull updates with rebase in case remote branch was updated since fetch
             git pull --rebase origin "$BRANCH_NAME" || true
             git push origin "$BRANCH_NAME"
+            
             echo "HAS_CHANGES=true" >> $GITHUB_ENV
             echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
           fi
