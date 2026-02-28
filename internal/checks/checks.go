@@ -64,8 +64,8 @@ func validateQuestion(q models.Question) error {
 		return fmt.Errorf("points must be between 0.5 and 5.0 (got %.1f)", q.Points)
 	}
 
-	if q.EstimatedSeconds < 5 || q.EstimatedSeconds > 300 {
-		return fmt.Errorf("estimated_seconds must be between 5 and 300 (got %d)", q.EstimatedSeconds)
+	if q.EstimatedSeconds < 5 || q.EstimatedSeconds > 30 {
+		return fmt.Errorf("estimated_seconds must be between 5 and 30 (got %d)", q.EstimatedSeconds)
 	}
 
 	if len(q.Sources) == 0 {
