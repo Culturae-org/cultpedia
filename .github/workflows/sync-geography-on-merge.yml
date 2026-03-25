@@ -8,7 +8,6 @@ on:
       - 'datasets/geography/countries.ndjson'
       - 'datasets/geography/continents.ndjson'
       - 'datasets/geography/regions.ndjson'
-      - 'datasets/geography/manifest.json'
       - 'datasets/geography/assets/**'
 
 jobs:
