@@ -1,11 +1,11 @@
 {
   "schema_version": "reference/1.0.0",
   "dataset": "geography",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "type": "geography",
   "license": "CC0-1.0",
   "created_at": "2025-11-30T00:00:00Z",
-  "updated_at": "2026-03-25T19:32:04Z",
+  "updated_at": "2026-03-25T20:08:38Z",
   "sources": [
     {
       "name": "APICountries",
