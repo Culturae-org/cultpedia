@@ -237,4 +237,4 @@ For questions or support, open an issue on GitHub or contact the Culturae/Cultpe
 
 ## License
 
-MIT - [Culturae](https://culturae.me)
+[LICENSE](./LICENSE) - [Culturae](https://culturae.me)
