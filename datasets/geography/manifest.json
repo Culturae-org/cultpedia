@@ -34,7 +34,9 @@
     "regions"
   ],
   "assets": {
-    "flags-svg": "assets/flags/svg/"
+    "flags-svg": "assets/flags/svg/",
+    "flags-png-512": "assets/flags/png_512/",
+    "flags-png-1024": "assets/flags/png_1024/"
   },
   "counts": {
     "continents": 6,
