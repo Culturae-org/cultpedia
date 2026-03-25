@@ -57,7 +57,9 @@ API is available at [api.culturae.me](https://api.culturae.me).
 - `GET /api/geography/countries` - All countries
 - `GET /api/geography/regions` - All regions
 - `GET /api/geography/continents` - All continents
-- `GET /api/geography/flags/{code}` - Country flag SVG
+- `GET /api/geography/flags/{code}` - Country flag (SVG format)
+- `GET /api/geography/flags/{code}/png` - Country flag (PNG format, 512px)
+- `GET /api/geography/flags/{code}/png/1024` - Country flag (PNG format, 1024px)
 
 **[Full API Documentation](docs/API.md)**
 
@@ -159,7 +161,9 @@ Using the LLMS.md guide from Cultpedia, generate a quiz question about [TOPIC].
 │       ├── regions.ndjson      # Regions file
 │       └── assets/
 │           └── flags/
-│               └── svg/        # Country flags (SVG format)
+│               ├── png_512/         # Country flags (PNG, 512px)
+│               ├── png_1024/        # Country flags (PNG, 1024px)
+│               └── svg/             # Country flags (SVG format)
 ├── docs/
 │   ├── CONTRIBUTING.md         # Contribution guidelines
 │   ├── FORMAT.md               # Data format specification
@@ -209,7 +213,7 @@ Using the LLMS.md guide from Cultpedia, generate a quiz question about [TOPIC].
 - [ ] Geography validator
 - [ ] Exporter (csv for example)
 - [ ] Branchs by theme
-- [ ] Add flags format
+- [x] Add flags format
 - [ ] Contribution cli help
 - [ ] Contribution Helper
 - [ ] More questions !
