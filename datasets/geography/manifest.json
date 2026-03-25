@@ -31,7 +31,8 @@
   "includes": [
     "countries",
     "continents",
-    "regions"
+    "regions",
+    "flags"
   ],
   "assets": {
     "flags-svg": "assets/flags/svg/",
