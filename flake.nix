@@ -26,19 +26,6 @@
             # Only for code quality checks, it's just for developers not dataset maintainers
             # golangci-lint
           ];
-          
-          shellHook = ''
-            echo "----------------------------------"
-            echo "|     Cultpedia environment!     |"
-            echo "----------------------------------"
-            echo ""
-            echo "Building cultpedia..."
-            go build -o cultpedia ./cmd
-            echo "[✔] Build complete!"
-            echo ""
-            echo "Run './cultpedia --help' for usage information."
-            echo ""
-          '';
         };
       });
 }
