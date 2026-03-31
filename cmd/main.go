@@ -234,7 +234,6 @@ func printQuestionPreview(q models.Question) {
 	}
 
 	fmt.Printf("  Difficulty: %s\n", q.Difficulty)
-	fmt.Printf("  Points:     %.1f\n", q.Points)
 	fmt.Printf("  Type:       %s\n", q.Qtype)
 	fmt.Println()
 

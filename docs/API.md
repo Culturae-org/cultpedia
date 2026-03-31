@@ -145,7 +145,6 @@ Returns questions with their translations, answers, and metadata.
 | `qtype` | string | `"single_choice"` or `"true_false"` |
 | `difficulty` | string | `"beginner"`, `"intermediate"`, `"advanced"`, `"pro"` |
 | `estimated_seconds` | number | Time to answer |
-| `points` | number | Scoring weight (0.5 to 5.0) |
 | `shuffle_answers` | boolean | Randomize answer order |
 | `i18n` | object | Translations (en, fr, es) |
 | `answers` | array | Answer options |

@@ -8,7 +8,6 @@
   "qtype": "single_choice",
   "difficulty": "intermediate",
   "estimated_seconds": 20,
-  "points": 1.0,
   "shuffle_answers": true,
   "i18n": {
     "fr": {

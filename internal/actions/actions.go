@@ -588,7 +588,6 @@ func resetSingleChoiceTemplate() error {
   "qtype": "single_choice",
   "difficulty": "beginner",
   "estimated_seconds": 15,
-  "points": 1.0,
   "shuffle_answers": true,
   "i18n": {
     "fr": { "title": "Titre par défaut", "stem": "Question par défaut ?", "explanation": "Explication par défaut." },
@@ -620,7 +619,6 @@ func resetTrueFalseTemplate() error {
   "qtype": "true_false",
   "difficulty": "beginner",
   "estimated_seconds": 10,
-  "points": 1.0,
   "shuffle_answers": false,
   "i18n": {
     "fr": { "title": "Titre vrai/faux", "stem": "Cette affirmation est-elle vraie ou fausse?", "explanation": "Explication par défaut à remplacer par votre explication détaillée." },

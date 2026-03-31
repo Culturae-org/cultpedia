@@ -29,7 +29,6 @@ Every question is a JSON object with the following fields. **All fields are requ
 | `qtype` | string | Yes | `"single_choice"` or `"true_false"` |
 | `difficulty` | string | Yes | `"beginner"`, `"intermediate"`, `"advanced"`, or `"pro"` |
 | `estimated_seconds` | integer | Yes | Between 5 and 300 inclusive |
-| `points` | number | Yes | Between 0.5 and 5.0 inclusive |
 | `shuffle_answers` | boolean | Yes | `true` for single_choice, `false` for true_false |
 | `i18n` | object | Yes | Translations (see I18n section) |
 | `answers` | array | Yes | Answer choices (see Answers section) |
@@ -172,14 +171,14 @@ If the statement is false, swap `is_correct`:
 
 ---
 
-## Difficulty and Points Guidelines
+## Difficulty Guidelines
 
-| Difficulty | Points | Estimated seconds | Question characteristics |
-|---|---|---|---|
-| `beginner` | 0.5 | 5–15 | Common knowledge, well-known facts |
-| `intermediate` | 1.0 | 10–20 | Requires some domain knowledge |
-| `advanced` | 1.5–2.0 | 15–30 | Specialized knowledge, less commonly known |
-| `pro` | 2.5–5.0 | 20–60 | Expert-level, obscure or highly technical |
+| Difficulty | Estimated seconds | Question characteristics |
+|---|---|---|
+| `beginner` | 5–15 | Common knowledge, well-known facts |
+| `intermediate` | 10–20 | Requires some domain knowledge |
+| `advanced` | 15–30 | Specialized knowledge, less commonly known |
+| `pro` | 20–60 | Expert-level, obscure or highly technical |
 
 ---
 
@@ -209,7 +208,6 @@ If the statement is false, swap `is_correct`:
   "qtype": "single_choice",
   "difficulty": "beginner",
   "estimated_seconds": 10,
-  "points": 0.5,
   "shuffle_answers": true,
   "i18n": {
     "fr": {
@@ -254,7 +252,6 @@ If the statement is false, swap `is_correct`:
   "qtype": "true_false",
   "difficulty": "beginner",
   "estimated_seconds": 10,
-  "points": 0.5,
   "shuffle_answers": false,
   "i18n": {
     "fr": {
@@ -297,7 +294,6 @@ If the statement is false, swap `is_correct`:
   "qtype": "single_choice",
   "difficulty": "intermediate",
   "estimated_seconds": 20,
-  "points": 1.0,
   "shuffle_answers": true,
   "i18n": {
     "fr": {
@@ -345,7 +341,6 @@ Before returning your response, verify each question against this checklist. **I
 - [ ] `qtype` is `"single_choice"` or `"true_false"`
 - [ ] `difficulty` is `"beginner"`, `"intermediate"`, `"advanced"`, or `"pro"`
 - [ ] `estimated_seconds` is an integer between 5 and 60
-- [ ] `points` is a number between 0.5 and 5.0
 - [ ] `shuffle_answers` is `true` for single_choice, `false` for true_false
 - [ ] `i18n` contains exactly 3 keys: `"fr"`, `"en"`, `"es"`
 - [ ] Each language has `title`, `stem`, and `explanation` as non-empty strings

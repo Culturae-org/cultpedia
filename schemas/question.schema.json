@@ -9,7 +9,6 @@
     "i18n",
     "qtype",
     "difficulty",
-    "points",
     "estimated_seconds"
   ],
   "properties": {
@@ -65,9 +64,6 @@
       "type": "number",
       "minimum": 5,
       "maximum": 30
-    },
-    "points": {
-      "type": "number"
     },
     "shuffle_answers": {
       "type": "boolean"

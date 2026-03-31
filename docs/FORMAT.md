@@ -41,7 +41,6 @@ Each question is a JSON object with the following fields:
 - `qtype`: `"single_choice"` or `"true_false"` (see Question Types below)
 - `difficulty`: `"beginner"`, `"intermediate"`, `"advanced"`, or `"pro"`
 - `estimated_seconds`: Number (time to answer, e.g., 20)
-- `points`: Number (scoring weight, e.g., 1.0 - between 0.5 and 5.0)
 - `shuffle_answers`: Boolean (whether to randomize answer order)
 - `i18n`: Object with translations for `fr`, `en`, `es`:
   - Each language has `title`, `stem`, `explanation`

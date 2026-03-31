@@ -71,7 +71,6 @@ func createValidQuestion() models.Question {
 		Theme:            models.Theme{Slug: "history"},
 		Qtype:            qtypeSingleChoice,
 		Difficulty:       "beginner",
-		Points:           1.0,
 		EstimatedSeconds: 20,
 		Sources:          []string{"https://example.com"},
 		I18n: map[string]models.I18n{
@@ -139,24 +138,6 @@ func TestValidateQuestion(t *testing.T) {
 		err := validateQuestion(q)
 		if err == nil {
 			t.Error("validateQuestion() should return error for invalid difficulty")
-		}
-	})
-
-	t.Run("points too low", func(t *testing.T) {
-		q := createValidQuestion()
-		q.Points = 0.1
-		err := validateQuestion(q)
-		if err == nil {
-			t.Error("validateQuestion() should return error for points below 0.5")
-		}
-	})
-
-	t.Run("points too high", func(t *testing.T) {
-		q := createValidQuestion()
-		q.Points = 10.0
-		err := validateQuestion(q)
-		if err == nil {
-			t.Error("validateQuestion() should return error for points above 5.0")
 		}
 	})
 

@@ -60,10 +60,6 @@ func validateQuestion(q models.Question) error {
 		return fmt.Errorf("difficulty must be one of: %s (got '%s')", strings.Join(validDifficulties, ", "), q.Difficulty)
 	}
 
-	if q.Points < 0.5 || q.Points > 5.0 {
-		return fmt.Errorf("points must be between 0.5 and 5.0 (got %.1f)", q.Points)
-	}
-
 	if q.EstimatedSeconds < 5 || q.EstimatedSeconds > 30 {
 		return fmt.Errorf("estimated_seconds must be between 5 and 30 (got %d)", q.EstimatedSeconds)
 	}

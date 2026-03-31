@@ -135,7 +135,6 @@ Example structure for a question:
   "qtype": "%s",
   "difficulty": "%s",
   "estimated_seconds": 15,
-  "points": 1.0,
   "shuffle_answers": true,
   "i18n": {
     "fr": { "title": "...", "stem": "...?", "explanation": "..." },

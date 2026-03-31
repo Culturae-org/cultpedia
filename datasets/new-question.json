@@ -8,7 +8,6 @@
   "qtype": "single_choice",
   "difficulty": "beginner",
   "estimated_seconds": 15,
-  "points": 1.0,
   "shuffle_answers": true,
   "i18n": {
     "fr": { "title": "Titre par défaut", "stem": "Question par défaut ?", "explanation": "Explication par défaut." },

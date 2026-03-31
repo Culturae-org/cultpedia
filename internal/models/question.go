@@ -10,7 +10,6 @@ type Question struct {
 	Qtype            string          `json:"qtype"`
 	Difficulty       string          `json:"difficulty"`
 	EstimatedSeconds int             `json:"estimated_seconds"`
-	Points           float64         `json:"points"`
 	ShuffleAnswers   bool            `json:"shuffle_answers"`
 	I18n             map[string]I18n `json:"i18n"`
 	Answers          []Answer        `json:"answers"`
