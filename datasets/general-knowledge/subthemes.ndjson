@@ -1,17 +1,44 @@
+{"slug":"20th-century","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
+{"slug":"africa","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
+{"slug":"ancient-history","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
+{"slug":"ancient-rome","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
+{"slug":"architecture","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
+{"slug":"asia","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
+{"slug":"astronomy","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
+{"slug":"basics","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
+{"slug":"basketball","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
+{"slug":"biology","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
+{"slug":"capital-cities","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
 {"slug":"capitals","i18n":{"en":{"label":"Capitals"},"es":{"label":"Capitales"},"fr":{"label":"Capitales"}}}
+{"slug":"chemistry","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
 {"slug":"china","i18n":{"en":{"label":"China"},"es":{"label":"China"},"fr":{"label":"Chine"}}}
+{"slug":"classical-mechanics","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
+{"slug":"continents","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
 {"slug":"countries","i18n":{"en":{"label":"Countries"},"es":{"label":"Países"},"fr":{"label":"Pays"}}}
 {"slug":"earth","i18n":{"en":{"label":"Earth"},"es":{"label":"Tierra"},"fr":{"label":"Terre"}}}
 {"slug":"emperors","i18n":{"en":{"label":"Emperors"},"es":{"label":"Emperadores"},"fr":{"label":"Empereurs"}}}
 {"slug":"europe","i18n":{"en":{"label":"Europe"},"es":{"label":"Europa"},"fr":{"label":"Europe"}}}
+{"slug":"football","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
 {"slug":"formula-1","i18n":{"en":{"label":"Formula 1"},"es":{"label":"Fórmula 1"},"fr":{"label":"Formule 1"}}}
 {"slug":"french-revolution","i18n":{"en":{"label":"French Revolution"},"es":{"label":"Revolución francesa"},"fr":{"label":"Révolution française"}}}
+{"slug":"genetics","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
+{"slug":"indie-games","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
 {"slug":"inventors","i18n":{"en":{"label":"Inventors"},"es":{"label":"Inventores"},"fr":{"label":"Inventeurs"}}}
 {"slug":"landmarks","i18n":{"en":{"label":"Landmarks"},"es":{"label":"Monumentos"},"fr":{"label":"Monuments"}}}
 {"slug":"measurements","i18n":{"en":{"label":"Measurements"},"es":{"label":"Medidas"},"fr":{"label":"Mesures"}}}
 {"slug":"modern-history","i18n":{"en":{"label":"Modern History"},"es":{"label":"Historia moderna"},"fr":{"label":"Histoire moderne"}}}
 {"slug":"motorsport","i18n":{"en":{"label":"Motorsport"},"es":{"label":"Automovilismo"},"fr":{"label":"Sport automobile"}}}
+{"slug":"natural-wonders","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
+{"slug":"nba","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
+{"slug":"nintendo","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
+{"slug":"oceans","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
+{"slug":"olympics","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
+{"slug":"periodic-table","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
 {"slug":"physics","i18n":{"en":{"label":"Physics"},"es":{"label":"Física"},"fr":{"label":"Physique"}}}
+{"slug":"records","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
 {"slug":"science","i18n":{"en":{"label":"Science"},"es":{"label":"Ciencia"},"fr":{"label":"Sciences"}}}
+{"slug":"solar-system","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
 {"slug":"studios","i18n":{"en":{"label":"Studios"},"es":{"label":"Estudios"},"fr":{"label":"Studios"}}}
 {"slug":"video-games","i18n":{"en":{"label":"Video Games"},"es":{"label":"Videojuegos"},"fr":{"label":"Jeux vidéo"}}}
+{"slug":"world-cup","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
+{"slug":"world-war-2","i18n":{"en":{"label":""},"es":{"label":""},"fr":{"label":""}}}
