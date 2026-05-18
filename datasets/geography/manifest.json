@@ -1,11 +1,11 @@
 {
   "schema_version": "reference/1.0.0",
   "dataset": "geography",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "type": "geography",
   "license": "CC0-1.0",
   "created_at": "2025-11-30T00:00:00Z",
-  "updated_at": "2026-03-25T19:32:04Z",
+  "updated_at": "2026-05-18T08:05:11Z",
   "sources": [
     {
       "name": "APICountries",
@@ -47,7 +47,7 @@
   },
   "checksums": {
     "continents.ndjson": "sha256-7eb36aa5d3efcc1831b5693fbe008673c5a705e11289f59132753a389eae3084",
-    "countries.ndjson": "sha256-35c534cdb84dcfc6fc4c024e22fe7d236fdde1120a9a9b282f5bac734d7b7cbc",
+    "countries.ndjson": "sha256-8b227f6872014cf8e13b4ce25c3fffd331746cad4ff365197f498f7704f4d50f",
     "regions.ndjson": "sha256-2fd141fb66451f9504e2d5978a0f4aeb8aca83c381ba35c96258d4ae1ae063e4"
   }
 }
